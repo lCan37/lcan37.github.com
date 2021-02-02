@@ -4,6 +4,11 @@ mathjax: true
 toc: true
 toc_sticky: true
 toc_label: 목차
+categories:
+- AI
+- ML
+- DL
+- Summary
 ---
 
 # Cost함수를 도출하기
