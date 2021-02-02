@@ -59,3 +59,22 @@ $$
 
 이때 $$ \alpha $$ 는 Learning Rate(학습율)로, 학습의 정도를 지정하는 수치이다. 보통 일반적으로 0.1을 선정한다.
 위에서 작성한 수식은 아래와 같이 정리하여 나타낼 수 있다.
+
+$$
+W := W - \alpha \frac{\delta}{\delta W} \cdot \frac{1}{2m}\sum_{i=1}^n(Wx^i-y^i)^2
+$$
+
+이는 아래와 같이 풀어서 작성할 수 있다.
+
+$$
+W := W - \alpha \cdot \frac{1}{2m} \cdot 2\sum_{i=1}^n(Wx^i-y^i) \cdot x^i
+$$
+
+합성함수의 미분이 완료된 후, 공통 인수로 나누면 아래와 같이 정리가 가능하다.
+
+$$
+W := W - \alpha \cdot \frac{1}{m} \sum_{i=1}^n(Wx^i-y^i) \cdot x^i
+$$
+
+따라서 **위 공식이 Gradient Descent를 활용한 Cost를 최소화하는 방법의 공식**이다.
+단, 이때 한가지 유념해야 할 것은, Local Minimal = Gloabal Minimal이어야 한다는 점이다(local minimal이 여러 개 발생하면 안됨).
