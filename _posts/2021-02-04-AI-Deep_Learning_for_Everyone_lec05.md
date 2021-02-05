@@ -67,5 +67,45 @@ $$ cost(W,b) = \frac{1}{m}\sum^n _{i=1}(H(x)^i)-y^i)^2 $$   $$ when $$   $$ H(x)
 
 위는 Local Minimal != Global Minimal이다. 즉, Gradient Descent를 적용하면, 최소가 아닌 지점임에도 최소라고 판단하여 해당 W값을 반환할 것이다. 따라서 우리는 분류 환경(이하 로지스틱 회귀)에 걸맞는 cost 함수를 재정의해줄 필요가 있다.
 
-## New cost function for Logistic
-이하 부분은 21년 02월 5일 업로드 예정입니다.
+## New Cost Function for Logistic
+로지스틱 분류(회귀)에서 새로운 cost function은 다음과 같이 정의할 수 있다. 
+
+$$
+cost(W) = \frac{1}{m}\sum c(H(x), y)
+$$ 
+
+물론 이때 $$ H(x) =  \frac{1}{1+e^{-W^{T}X}} $$이다.
+
+$$
+c(H(x), y) = 
+\left\{\begin{matrix}-log(H(x)):y=1
+\\ 
+-log(1-H(x)):y=0
+\end{matrix}\right.
+$$
+
+위와 같이 재정의 하면, $$ y = 1 $$ 일 때와 $$ y = 0 $$ 일때의 cost 함수의 모양을 다음과 같이 생각할 수 있다.
+
+> 참고로 y의 값은 무조건 0 또는 1이다. 이는 Logistic Classification이기 때문이다.
+
+![](https://user-images.githubusercontent.com/68592553/107025433-ca5d7f80-67ec-11eb-9975-2551380f6865.PNG)
+## Cost Funtion
+따라서 위를 정리하면 아래와 같이 한줄 식으로 정리할 수 있다.
+
+$$
+c(H(x),y) = -ylog(H(x)) -(1-y)log(1-H(x))
+$$
+
+위 수식은 복잡하게 보일지라도, 전혀 복잡하지 않다. 그 이유는 $$ H(x)  = 1$$ 또는 $$ 0 $$ 이기 때문이다. 따라서 하나의 y식이 소거된다.
+
+이는 즉, 다음과 같다.
+
+$$
+cost(W) = -\frac{1}{m}\sum(ylogH(x) +(1-y)log(1-H(x))
+$$
+
+이는 다음처럼 Gradient Descent를 활용한 변화값을 정의할 수 있다.
+
+$$
+W := W - \alpha\frac{\delta}{\delta W}cost(W)
+$$
