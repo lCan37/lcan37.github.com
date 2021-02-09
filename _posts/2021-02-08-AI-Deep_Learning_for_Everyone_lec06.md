@@ -1,5 +1,5 @@
 ---
-title: "[Summary][ML/DL] How to Minimize Cost (lec06)"
+title: "[Summary][ML/DL] Multinomial(Using Softmax) Classification (lec06)"
 ---
 
-soon add
+soon add(02/10)
